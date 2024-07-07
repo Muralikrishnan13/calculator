@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JavaScript Calculator</title>
+<style>
+  h1 {
+    text-align: center;
+    padding: 23px;
+    background-color: rgb(155, 193, 208);
+    color: white;
+  }
+
+  #clear {
+    width: 270px;
+    border: 3px solid rgb(218, 112, 112);
+    border-radius: 3px;
+    padding: 20px;
+    background-color: rgb(241, 189, 189);
+  }
+
+  .formstyle {
+    width: 350px;
+    height: 640px;
+    margin: auto;
+    border: 3px solid rgb(30, 122, 158);
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  input {
+    width: 50px;
+    background-color: rgb(190, 141, 124);
+    color: black;
+    border: 3px solid rgb(169, 118, 118);
+    border-radius: 10px;
+    padding: 26px;
+    margin: 5px;
+    font-size: 15px;
+  }
+
+  #calc {
+    width: 250px;
+    border: 5px solid black;
+    border-radius: 3px;
+    padding: 20px;
+    margin: auto;
+  }
+</style>
+</head>
+<body>
+<h1>JavaScript Calculator</h1>
+<div class="formstyle">
+  <form name="form1">
+    <input id="calc" type="text" name="answer"> <br><br>
+    <input type="button" value="AC" onclick="clearScreen()">
+    <input type="button" value="DEL" onclick="deleteChar()">
+    <input type="button" value="%" onclick="appendCharacter('%')">
+    <input type="button" value="." onclick="appendCharacter('.')">
+    <br><br>
+    <input type="button" value="1" onclick="appendCharacter('1')">
+    <input type="button" value="2" onclick="appendCharacter('2')">
+    <input type="button" value="3" onclick="appendCharacter('3')">
+    <input type="button" value="+" onclick="appendCharacter('+')">
+    <br><br>
+    <input type="button" value="4" onclick="appendCharacter('4')">
+    <input type="button" value="5" onclick="appendCharacter('5')">
+    <input type="button" value="6" onclick="appendCharacter('6')">
+    <input type="button" value="-" onclick="appendCharacter('-')">
+    <br><br>
+    <input type="button" value="7" onclick="appendCharacter('7')">
+    <input type="button" value="8" onclick="appendCharacter('8')">
+    <input type="button" value="9" onclick="appendCharacter('9')">
+    <input type="button" value="*" onclick="appendCharacter('*')">
+    <br><br>
+    <input type="button" value="/" onclick="appendCharacter('/')">
+    <input type="button" value="0" onclick="appendCharacter('0')">
+    <input type="button" value="." onclick="appendCharacter('.')">
+    <input type="button" value="=" onclick="calculate()">
+    <br><br>
+    <input type="button" value="Clear All" onclick="clearScreen()" id="clear">
+    <br>
+  </form>
+</div>
+
+<script>
+  function clearScreen() {
+    document.form1.answer.value = "";
+  }
+
+  function deleteChar() {
+    let input = document.form1.answer.value;
+    document.form1.answer.value = input.substring(0, input.length - 1);
+  }
+
+  function appendCharacter(character) {
+    document.form1.answer.value += character;
+  }
+
+  function calculate() {
+    try {
+      document.form1.answer.value = eval(document.form1.answer.value);
+    } catch (error) {
+      document.form1.answer.value = "Error";
+    }
+  }
+</script>
+</body>
+</html>
